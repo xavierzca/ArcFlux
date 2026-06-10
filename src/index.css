@@ -1,0 +1,349 @@
+@import "tailwindcss";
+
+:root {
+  --bg-color: #000000;
+  --text-color: #f1f5f9;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 150, 255, 0.08);
+  --glass-shadow-hover: rgba(0, 150, 255, 0.16);
+  --card-hover-border: rgba(6, 182, 212, 0.35);
+  --header-bg: rgba(0, 0, 0, 0.4);
+  --input-bg: rgba(255, 255, 255, 0.02);
+  --input-border: rgba(255, 255, 255, 0.05);
+  --input-border-hover: rgba(255, 255, 255, 0.1);
+  --text-title: #ffffff;
+  --text-slate-400: #94a3b8;
+  --text-slate-550: #64748b;
+  --tab-bg: rgba(255, 255, 255, 0.05);
+  --tab-border: rgba(255, 255, 255, 0.05);
+  --orb-opacity: 0.12;
+}
+
+html.light {
+  --bg-color: #F0F4FF; /* very light blue-gray, NOT pure white */
+  --text-color: #1A1A2E; /* dark navy */
+  --glass-bg: #FFFFFF;
+  --glass-border: #E0E7FF;
+  --glass-shadow: rgba(0, 102, 255, 0.08);
+  --glass-shadow-hover: rgba(0, 102, 255, 0.12);
+  --card-hover-border: #0066FF;
+  --header-bg: #FFFFFF;
+  --input-bg: #F5F7FF;
+  --input-border: #E0E7FF;
+  --input-border-hover: #C7D2FE;
+  --text-title: #1A1A2E;
+  --text-slate-400: #4A5568;
+  --text-slate-550: #64748b;
+  --tab-bg: #EEF2FF;
+  --tab-border: #E0E7FF;
+  --orb-opacity: 0.06;
+}
+
+@layer base {
+  html, body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 300ms ease, color 300ms ease;
+  }
+}
+
+/* Light mode overrides for structural elements to guarantee beautiful high-contrast UI */
+html.light .text-white {
+  color: #1A1A2E !important;
+}
+
+html.light .text-slate-50,
+html.light .text-slate-100,
+html.light .text-slate-200,
+html.light .text-slate-300 {
+  color: #1A1A2E !important;
+}
+
+html.light .text-slate-400,
+html.light .text-slate-500,
+html.light .text-slate-550 {
+  color: #4A5568 !important;
+}
+
+html.light .text-slate-600 {
+  color: #718096 !important;
+}
+
+/* Specific styling for values and numbers in light mode */
+html.light .text-\[\#00D4FF\],
+html.light .text-cyan-400,
+html.light .text-cyan-300,
+html.light .text-cyan-500,
+html.light .text-blue-400,
+html.light .text-blue-500,
+html.light .text-indigo-400,
+html.light .text-purple-400 {
+  color: #0066FF !important;
+}
+
+html.light .bg-black {
+  background-color: var(--bg-color) !important;
+}
+
+/* Header style override */
+html.light header {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 1px solid #E0E7FF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html.light header *,
+html.light header span,
+html.light header text {
+  color: #1A1A2E;
+}
+
+html.light header button:not(#theme-toggle):not(.shimmer-btn-shine),
+html.light header div:not(.group/faucet):not(.shimmer-btn-shine) {
+  color: #1A1A2E !important;
+}
+
+/* Specific elements for Faucet and Header hover effects */
+html.light header .group\/faucet a {
+  background-color: #FFFFFF !important;
+  border-color: #0066FF !important;
+  color: #0066FF !important;
+}
+
+html.light header .group\/faucet a:hover {
+  background-color: #0066FF !important;
+  color: #FFFFFF !important;
+}
+
+/* Network Status Bar styling in light mode */
+html.light .bg-\[\#030303\] {
+  background-color: #EEF2FF !important;
+  border-bottom: 1px solid #E0E7FF !important;
+}
+
+html.light .bg-\[\#030303\] *,
+html.light .bg-\[\#030303\] span,
+html.light .bg-\[\#030303\] div {
+  color: #1A1A2E !important;
+}
+
+html.light .bg-\[\#030303\] .text-cyan-400 {
+  color: #0066FF !important;
+}
+
+/* Premium Card Glassmorphism overrides in light mode */
+html.light .glass-card-premium,
+html.light [class*="glass-card-premium"],
+html.light div.rounded-3xl,
+html.light div.rounded-2xl,
+html.light .rounded-3\.2xl {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E0E7FF !important;
+  box-shadow: 0 4px 24px rgba(0, 102, 255, 0.08) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html.light .glass-card-premium:hover,
+html.light [class*="glass-card-premium"]:hover {
+  border-color: #0066FF !important;
+  box-shadow: 0 4px 28px rgba(0, 102, 255, 0.15) !important;
+}
+
+/* Inner card boxes, tables, tabs, inputs */
+html.light .bg-\[\#ffffff\]\/\[0\.02\],
+html.light .bg-white\/\[0\.02\],
+html.light .bg-white\/5,
+html.light .bg-white\/10,
+html.light .bg-slate-900,
+html.light .bg-slate-950,
+html.light .bg-white\/\[0\.01\],
+html.light .bg-white\/\[0\.03\],
+html.light .bg-black\/40 {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E0E7FF !important;
+}
+
+html.light .hover\:border-white\/10:hover {
+  border-color: #0066FF !important;
+}
+
+html.light .border-white\/5,
+html.light .border-white\/10 {
+  border-color: #E0E7FF !important;
+}
+
+html.light .border-b-white\/5 {
+  border-color: #E0E7FF !important;
+}
+
+html.light .bg-black\/20 {
+  background-color: rgba(15, 23, 42, 0.03) !important;
+}
+
+/* Input tags text inside the forms */
+html.light input {
+  color: #1A1A2E !important;
+}
+
+html.light input::placeholder {
+  color: #718096 !important;
+}
+
+/* Preserve layout primary gradient CTA and theme control buttons */
+html.light button.bg-gradient-to-r,
+html.light .bg-gradient-to-r.shimmer-btn-shine,
+html.light button[class*="bg-gradient-"],
+html.light button.bg-blue-600,
+html.light button.bg-indigo-600 {
+  color: #FFFFFF !important;
+}
+
+html.light button.bg-gradient-to-r *,
+html.light .bg-gradient-to-r.shimmer-btn-shine * {
+  color: #FFFFFF !important;
+}
+
+/* Circular stroke in AMM Pools chart */
+html.light circle.stroke-white\/5 {
+  stroke: #E0E7FF !important;
+}
+
+html.light circle.stroke-cyan-400 {
+  stroke: #0066FF !important;
+}
+
+/* Swap rate displays pulse-rate */
+html.light .pulse-rate {
+  color: #0066FF !important;
+  font-weight: 800 !important;
+}
+
+/* Footer overrides */
+html.light footer {
+  background-color: #FFFFFF !important;
+  border-top: 1px solid #E0E7FF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html.light footer *,
+html.light footer p {
+  color: #4A5568 !important;
+}
+
+/* Float Keyframes for background gradient orbs */
+@keyframes orb-float-1 {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(25px, -35px) scale(1.05); }
+  66% { transform: translate(-15px, 15px) scale(0.97); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes orb-float-2 {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(-30px, 30px) scale(1.08); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes orb-float-3 {
+  0% { transform: translate(0px, 0px) scale(0.98); }
+  33% { transform: translate(12px, 20px) scale(1.03); }
+  66% { transform: translate(-20px, -15px) scale(1.06); }
+  100% { transform: translate(0px, 0px) scale(0.98); }
+}
+
+/* Shimmer animation keyframes for CTA buttons */
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+  }
+  100% {
+    transform: translateX(150%) skewX(-25deg);
+  }
+}
+
+/* Keyframes for the circular progress ring */
+@keyframes progress-spin {
+  from {
+    stroke-dashoffset: 283;
+  }
+}
+
+/* Apply floating animations */
+.animate-orb-1 {
+  animation: orb-float-1 8s infinite ease-in-out;
+  opacity: var(--orb-opacity);
+}
+.animate-orb-2 {
+  animation: orb-float-2 10s infinite ease-in-out;
+  opacity: var(--orb-opacity);
+}
+.animate-orb-3 {
+  animation: orb-float-3 12s infinite ease-in-out;
+  opacity: var(--orb-opacity);
+}
+
+/* Hide animated orbs completely in light mode */
+html.light .animate-orb-1,
+html.light .animate-orb-2,
+html.light .animate-orb-3 {
+  display: none !important;
+}
+
+/* Premium Card Glassmorphism and Neon Hover classes */
+.glass-card-premium {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 0 30px var(--glass-shadow);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-premium:hover {
+  border-color: var(--card-hover-border); /* neon cyan/blue border on hover */
+  box-shadow: 0 0 35px var(--glass-shadow-hover), inset 0 0 12px rgba(6, 182, 212, 0.05);
+}
+
+/* Shimmer shine overlay */
+.shimmer-btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: translateX(-150%) skewX(-25deg);
+  animation: shimmer-sweep 3s infinite ease-in-out;
+}
+
+/* Pulse keyframe */
+@keyframes text-glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 4px rgba(6, 182, 212, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(6, 182, 212, 0.65), 0 0 18px rgba(0, 102, 255, 0.3);
+  }
+}
+
+.pulse-rate {
+  animation: text-glow-pulse 3s infinite ease-in-out;
+}

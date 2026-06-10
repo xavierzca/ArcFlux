@@ -1,2 +1,20 @@
-# ArcFlux
-ArcFlux is a next-generation decentralized exchange (DEX) built natively on Arc Testnet Circle institutional-grade Layer 1 blockchain powered by USDC as the native gas token. ArcFlux is designed for speed, simplicity, and transparency, offering a premium DeFi experience for both retail and institutional users
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
+
+# Run and deploy your AI Studio app
+
+This contains everything you need to run your app locally.
+
+View your app in AI Studio: https://ai.studio/apps/37f669fd-c90c-4f06-8f86-29ef61943f79
+
+## Run Locally
+
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

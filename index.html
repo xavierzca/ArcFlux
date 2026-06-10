@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArcFlux | Premium AMM Swap on Arc Testnet</title>
+    <meta name="description" content="⚡ ArcFlux: Ultra-Fast, Instant Swaps, and Native USDC/EURC Settlement with premium Liquidity Provision on Arc Testnet." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <script>
+      (function() {
+        try {
+          var originalDefineProperty = Object.defineProperty;
+          Object.defineProperty = function(target, property, attributes) {
+            if (property === 'ethereum') {
+              try {
+                return originalDefineProperty.apply(this, arguments);
+              } catch (e) {
+                console.warn('Prevented crash on Object.defineProperty for ethereum:', e);
+                try {
+                  if (target && typeof target === 'object') {
+                    if (attributes && 'value' in attributes) {
+                      target[property] = attributes.value;
+                    }
+                  }
+                } catch (_) {}
+                return target;
+              }
+            }
+            return originalDefineProperty.apply(this, arguments);
+          };
+
+          var originalDefineProperties = Object.defineProperties;
+          Object.defineProperties = function(target, props) {
+            if (props && 'ethereum' in props) {
+              try {
+                return originalDefineProperties.apply(this, arguments);
+              } catch (e) {
+                console.warn('Prevented crash on Object.defineProperties for ethereum:', e);
+                var safeProps = Object.assign({}, props);
+                delete safeProps.ethereum;
+                try {
+                  originalDefineProperties.call(this, target, safeProps);
+                } catch (_) {}
+                try {
+                  if (props.ethereum && 'value' in props.ethereum) {
+                    target.ethereum = props.ethereum.value;
+                  }
+                } catch (_) {}
+                return target;
+              }
+            }
+            return originalDefineProperties.apply(this, arguments);
+          };
+        } catch (err) {
+          console.error('Failed to configure fail-safe ethereum guards:', err);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
